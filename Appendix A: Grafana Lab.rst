@@ -2,9 +2,43 @@
 
 Appendix A: Grafana Lab
 ========
+Task 1: Create a Grafana Dashboard and Panel
+   - In the Grafana Web console, hover over the dashboard icon and select: ``Manage``
+   - In the ``Manage dashboard & folders`` page, select: ``New Dashboard``
+   - In the ``New Dashboard`` page, select: ``Add new Panel``
+   - In the query tab, select: ``InfluxDB``
+   - Under the ``A`` dropdown choose the following options:
+      - FROM:
+         - Click ``select measurement`` and select: ``net``
+         - Click the ``+`` and select: ``host``
+         - Click ``select tag value`` and select: ``so-sensor01``
+         - Click the ``+`` and select: ``interface``
+         - Click ``select tag value`` and select: ``bond0``
+
+      - SELECT:
+         - Click ``field value`` and select: ``bytes_recv``
+         - Click the ``+`` and select: ``derivative`` under the transformations dropdown and set the value to ``1s``
+         - Click the ``+`` and select: ``math`` and set the value to ``(*8)``
+      
+      - ALIAS BY:
+         - Query Alias: ``Inbound Bytes``
+         
+   - Click on the ``Save`` icon located on the top right of the page and save the new dashboard with the following settings:
+      - Dashboard Name: ``Alerting Dashboard``
+      - Under the ``Folder`` dropdown, select: ``General``
+      - Click: ``Save``
+Task 2: Add a new email notifications channel in Grafana
+   - In the Grafana Web console, hover over the Alerting icon and select: ``Notification Channel``
+   - In the ``Alert rules & notification`` page, select: ``Add channel``
+   - Use the following settings to configure the Email Notification channel:
+      - Name: ``Tech Support``
+      - Type: ``Email``
+      - Addresses:``tech-support@pwned-corp.com;mike@pwned-corp.com;management@pwned-corp.com`` 
+   - Click: ``Save``
 
 
-
+   
+   
 
 
 
